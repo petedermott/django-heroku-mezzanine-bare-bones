@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+*.db
+.DS_Store
+.coverage
+.idea/workspace.xml
+.idea
+/node_modules/
