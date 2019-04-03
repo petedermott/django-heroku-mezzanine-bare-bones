@@ -1,15 +1,43 @@
 {
-  "name": "fermor-framework",
+  "name": "django-heroku-mezzanine-bare-bones",
   "version": "0.0.1",
+  "repository": {
+    "type": "git"
+  },
+  "author": "Peter Dermott @ Fermor Ltd",
+  "license": "BSD-3-Clause",
+  "homepage": "",
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-cli": "latest",
-    "grunt-concurrent": "^2.3.1",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-critical": "^0.2.2",
-    "grunt-fontello": "^0.3.3",
-    "grunt-sass": "latest"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.4.4",
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "cssnano": "^4.1.8",
+    "del": "^3.0.0",
+    "eslint": "^5.10.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "node-sass": "^4.11.0",
+    "postcss-flexbugs-fixes": "^4.1.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ],
+  "scripts": {
+    "heroku-postbuild": "gulp build"
   }
 }

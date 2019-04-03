@@ -5,12 +5,11 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 ## Requirements
 * A Heroku account
 * An AWS S3 bucket for hosting media content
-* A SparkPost account for sending email (optional)
 
 ## Features
 * Django 1.10.7
 * Mezzanine 4.2.3
-* Grunt for compiling SASS and Javascript
+* Gulp for compiling SASS and Javascript
 
 ## Setup
 1. Create local database
@@ -18,7 +17,7 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 3. pip install django
 4. django-admin.py startproject --template=https://github.com/petedermott/django-heroku-mezzanine-bare-bones.git --name=Procfile --extension=py,md,env $project_name
 5. cd $project_name
-6. Update $project_name/settings.py with your AWS / Heroku / Sparkpost details (most of which are at the top of the file)
+6. Update $project_name/settings.py with your AWS / Heroku details (most of which are at the top of the file)
 7. Update local_settings with postgres details
 8. pip install -r requirements.txt
 9. ./manage.py migrate

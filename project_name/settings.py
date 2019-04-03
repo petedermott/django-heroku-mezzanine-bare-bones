@@ -362,13 +362,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 AWS_QUERYSTRING_AUTH = False
 
 ##################
-# EMAIL SETTINGS #
-##################
-EMAIL_FAIL_SILENTLY = False
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'sparkpost.django.email_backend.SparkPostEmailBackend'
-
-##################
 # LOCAL SETTINGS #
 ##################
 
