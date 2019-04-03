@@ -27,9 +27,21 @@ MEDIA_URL = "http://{{ project_name }}.s3.amazonaws.com/"
 # OTHER SETTINGS
 SECRET_KEY = ''
 GOOGLE_ANALYTICS_ID = ''
-SPARKPOST_API_KEY = ''
 
 # HEROKU AND OTHER AWS SETTINGS ARE AT THE BOTTOM OF THIS FILE
+
+#####################
+# DATABASE SETTINGS #
+#####################
+# Update database configuration with $DATABASE_URL.
+# Use the local DB setting as a default, it will get overwritten by heroku when deployed.
+DATABASES = {
+    "default": dj_database_url.config(
+        default="postgres://postgres:postgres@localhost:5432/{{ project_name }}",
+        conn_max_age=10,
+        ssl_require=True,
+    )
+}
 
 ######################
 # MEZZANINE SETTINGS #
@@ -160,29 +172,6 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
 
-
-#############
-# DATABASES #
-#############
-
-DATABASES = {
-    "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        # DB name or path to database file if using sqlite3.
-        "NAME": "",
-        # Not used with sqlite3.
-        "USER": "",
-        # Not used with sqlite3.
-        "PASSWORD": "",
-        # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
-        # Set to empty string for default. Not used with sqlite3.
-        "PORT": "",
-    }
-}
-
-
 #########
 # PATHS #
 #########
@@ -219,7 +208,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -242,7 +231,6 @@ TEMPLATES = [
         "DIRS": [
             os.path.join(PROJECT_ROOT, "templates")
         ],
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
@@ -259,6 +247,11 @@ TEMPLATES = [
             "builtins": [
                 "mezzanine.template.loader_tags",
             ],
+            "loaders": [
+                "mezzanine.template.loaders.host_themes.Loader",
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ]
         },
     },
 ]
@@ -316,7 +309,6 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.request.CurrentRequestMiddleware",
     "mezzanine.core.middleware.RedirectFallbackMiddleware",
     "mezzanine.core.middleware.TemplateForDeviceMiddleware",
-    "mezzanine.core.middleware.TemplateForHostMiddleware",
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
     "mezzanine.core.middleware.SitePermissionMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
@@ -361,27 +353,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AWS_QUERYSTRING_AUTH = False
 
-##################
-# LOCAL SETTINGS #
-##################
-
-# Allow any settings to be defined in local_settings.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-
-# Instead of doing "from .local_settings import *", we use exec so that
-# local_settings has full access to everything defined in this module.
-# Also force into sys.modules so it's visible to Django's autoreload.
-
-f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
-if os.path.exists(f):
-    import sys
-    import imp
-    module_name = "%s.local_settings" % PROJECT_APP
-    module = imp.new_module(module_name)
-    module.__file__ = f
-    sys.modules[module_name] = module
-    exec(open(f, "rb").read())
 
 ####################
 # DYNAMIC SETTINGS #
