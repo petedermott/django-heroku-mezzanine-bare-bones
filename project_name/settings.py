@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import, unicode_literals
 import os
 import dj_database_url
@@ -12,8 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 # The following settings are those that are essential in order to get tbe
 # bare bones template working correctly.
 # Obviously additional amendments are required.
-
-# TODO: Remember to remove local_settings from Git before deployment!
 
 # AWS MEDIA FILES
 AWS_ACCESS_KEY_ID =''
@@ -155,7 +152,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = bool(os.environ.get('DEBUG')) or False
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

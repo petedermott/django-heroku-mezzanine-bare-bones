@@ -8,7 +8,7 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 
 ## Features
 * Django 1.10.7
-* Mezzanine 4.2.3
+* Mezzanine 4.2.3 & Cartridge 0.13.0
 * Gulp for compiling SASS and Javascript
 
 ## Setup
@@ -18,7 +18,9 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 3. pip install django==1.11.20
 4. django-admin.py startproject --template=https://github.com/petedermott/django-heroku-mezzanine-bare-bones/zipball/master --name=Procfile --extension=py,md,env $project_name
 5. cd $project_name
-6. Update $project_name/settings.py with your AWS / Heroku details (most of which are at the top of the file) and your SECRET_KEY
+6. Update $project_name/settings.py with your AWS / Heroku details (most of which are at the top of the file) 
+7. Add your SECRET_KEY
+8. Set a DEBUG environment variable to True
 8. pip install -r requirements.txt
 9. ./manage.py migrate
 10. runserver
