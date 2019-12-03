@@ -26,20 +26,6 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 10. runserver
 11. ./manage.py createsuperuser
 
-### Optional extras
-I use Gulp to include SASS compilation and JS minification in every project so I have included my build files for this here since I believe they may be helpful.
-To use these install [node / npm](https://nodejs.org/en/) and [Gulp](https://gulpjs.com/docs/en/getting-started/quick-start) then install using
-
-    npm install
- and 
-
-    gulp
-to start watching directories. Your SASS and js should automatically be compiled.
-
-## Changes from base Mezzanine
-Changes from standard mezzanine install will be listed here.
-
-* Removal of local_settings.py and the use of dj_database_url to set the database in it's place. 
 
 ## Contributing
-Comments, feedback and pull requests are all welcome!
+Comments, feedback and pull requests are all welcome
