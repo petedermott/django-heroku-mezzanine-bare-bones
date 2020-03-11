@@ -7,7 +7,7 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 * An AWS S3 bucket for hosting media content
 
 ## Features
-* Django 1.10.7
+* Django 1.11.28
 * Mezzanine 4.2.3 & Cartridge 0.13.0
 * Gulp for compiling SASS and Javascript
 
@@ -15,7 +15,7 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 1. Create local postgres database (default user / pass = postgres)
 2. Create your Amazon S3 Bucket with the name of your project
 2. mkvirtualenv $project_name
-3. pip install django==1.11.20
+3. pip install django==1.11.28
 4. django-admin.py startproject --template=https://github.com/petedermott/django-heroku-mezzanine-bare-bones/zipball/master --name=Procfile --extension=py,md,env $project_name
 5. cd $project_name
 6. Update $project_name/settings.py with your AWS / Heroku details (most of which are at the top of the file) 
