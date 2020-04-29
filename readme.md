@@ -9,7 +9,6 @@ Django and Heroku generally play nicely but sometimes [Mezzanine](https://github
 ## Features
 * Django 1.11.28
 * Mezzanine 4.2.3 & Cartridge 0.13.0
-* Gulp for compiling SASS and Javascript
 
 ## Setup
 1. Create local postgres database (default user / pass = postgres)
