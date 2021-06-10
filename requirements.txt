@@ -1,6 +1,6 @@
 boto==2.49.0
 Cartridge==0.13.0
-Django==1.11.29
+Django==2.2.24
 Mezzanine==4.3.1
 dj-database-url==0.5.0
 django-storages==1.8
